@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ClimberTask">
 <head>
-<title>Climber Task Page</title>
-<style>
-table {
+	<title>Climber Task Page</title>
+	<script src="ClimberTask.js"></script> 
+	
+	<style>
+	table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -20,21 +22,28 @@ tr:nth-child(even) {
 }
 </style>
 </head>
-<body>
+<body ng-controller ="ClimberTaskController">
   <a href="blank" align="right">Account</a>
   <a href="blank" align="right">Logout</a>
   <h1 align="center">Climber Task Page</h1>
+  
 <h2>Search for a task</h2>
-<form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-    </div>
-    <button type="submit" class="btn btn-default">
+	<input type ="text" ng-model="search"> 
+	<ul> 
+		<li ng-repeat="item in list | filter:search"> 
+			{{item.taskname}} 
+		</li> 
+	</ul> 
+	
+		
+<form ng-submit="addTask">
 
-    </button>
+        <input type="text" class="form-control" placeholder="Task Name" ng-model="taskname">
+        <input type="submit" value="Submit">
+    
   
 </form>
-    <table>
+ <!--   <table>
       <tr>
         <th>Task Name</th> <!-- Actual Task name will go here in end product -->
         <th>Deadline</th>
@@ -49,41 +58,12 @@ tr:nth-child(even) {
       </tr>
       <tr>
         <td>Task 2</td>
-        <td>09/17/2017</td>
-        <td>Completed</td>
-        <td>3 Loaves Bread</td>
-      </tr>
-      <tr>
-        <td>Task 3</td>
-        <td>11/22/2017</td>
-        <td>Not Completed</td>
-        <td>$700</td>
-      </tr>
-      <tr>
-        <td>Task 4</td>
-        <td>12/07/2017</td>
-        <td>Not Completed</td>
-        <td>$20 Macy's Gift Card</td>
-      </tr>
-      <tr>
-        <td>Task 5</td>
-        <td>10/19/2017</td>
-        <td>Not Completed</td>
-        <td>Blade Runner 2049 Movie Ticket</td>
-      </tr>
-      <tr>
-        <td>Task 6</td>
-        <td>10/15/2017</td>
-        <td>Not Completed</td>
-        <td>Ipad</td>
-      </tr>
-      <tr>
-        <td>Task 7</td>
-        <td>11/12/2017</td>
-        <td>Not Completed</td>
-        <td>$20</td>
+        <td>10/13/2017</td>
+        <td> Completed</td>
+        <td>$100</td>
       </tr>
     </table>
+    -->
     <!-- Regarding functionality of list:
        - Maybe list should be filtered by skill level,
        or by compensation type, or deadline.
